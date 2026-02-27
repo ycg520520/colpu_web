@@ -2,13 +2,13 @@
  * @Author: colpu
  * @Date: 2026-02-12 16:16:13
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-25 17:05:41
+ * @LastEditTime: 2026-02-27 18:46:53
  * 
  * Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
 import Link from "next/link";
 import { headers } from "next/headers";
-import Back from "@/components/client/Back";
+import Back from "@/components/Back";
 import { Metadata } from "next/types";
 
 // 生成404页面的元数据

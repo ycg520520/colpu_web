@@ -2,14 +2,14 @@
  * @Author: colpu
  * @Date: 2026-01-19 17:32:14
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-21 16:05:43
+ * @LastEditTime: 2026-02-27 20:09:28
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.scss";
+import "@/app/globals.scss";
 import { Metadata } from "next/types";
-import AuthProvider from "@/components/AuthProvider";
+import Providers from "@/components/Providers";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,7 +33,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-sm font-medium font-sans`}
       >
-        <AuthProvider>{children}</AuthProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

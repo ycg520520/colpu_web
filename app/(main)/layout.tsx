@@ -2,12 +2,11 @@
  * @Author: colpu
  * @Date: 2026-02-12 22:46:15
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-25 17:36:04
+ * @LastEditTime: 2026-02-27 18:52:47
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
 import type { Metadata } from "next";
-import "@/app/globals.scss";
 import Navbar from "@/components/Navbar";
 import WrapIcon from "@/components/WrapIcon";
 import { get } from "@/utils/request";
@@ -18,6 +17,7 @@ import { Icon } from "@iconify/react";
 import dayjs from "dayjs";
 import { getMenus } from "@/api";
 import UserAvatar from "@/components/UserAvatar";
+import CopyButton from "@/components/CopyButton";
 function getMenuSEO(map: any, pathname: string) {
   const { name, title, keywords, description } = map[pathname] || {};
   return {
@@ -83,6 +83,7 @@ export default async function MainLayout({
                   <a
                     href="/about"
                     className="text-gray-600 hover:text-primary transition-colors"
+                    title="关于我们"
                   >
                     关于我们
                   </a>
@@ -91,6 +92,7 @@ export default async function MainLayout({
                   <a
                     href="/agreement"
                     className="text-gray-600 hover:text-primary transition-colors"
+                    title="用户协议"
                   >
                     用户协议
                   </a>
@@ -99,6 +101,7 @@ export default async function MainLayout({
                   <a
                     href="/policy"
                     className="text-gray-600 hover:text-primary transition-colors"
+                    title="隐私政策"
                   >
                     隐私政策
                   </a>
@@ -118,12 +121,12 @@ export default async function MainLayout({
                   />
                   <div>
                     <span className="text-gray-400">微信: </span>
-                    <button
+                    <CopyButton
                       type="button"
                       className="text-gray-600 hover:text-primary transition-colors cursor-pointer"
                     >
                       {sites.wx}
-                    </button>
+                    </CopyButton>
                   </div>
                 </dd>
                 <dd className="flex items-center gap-1 mb-1">
