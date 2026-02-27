@@ -1,0 +1,38 @@
+{
+  "name": "colpu_admin_web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@heroui/react": "^2.8.9",
+    "@iconify/react": "^6.0.2",
+    "@tailwindcss/forms": "^0.5.11",
+    "antd": "^6.3.0",
+    "dayjs": "^1.11.19",
+    "framer-motion": "^12.34.0",
+    "isomorphic-dompurify": "^3.0.0-rc.2",
+    "next": "16.1.6",
+    "postcss": "^8.5.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sass": "^1.97.3",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^10",
+    "eslint-config-next": "16.1.6",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5"
+  }
+}

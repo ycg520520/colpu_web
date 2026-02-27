@@ -1,0 +1,116 @@
+@use "tailwindcss";
+// 使用heroUI
+@plugin './hero.ts';
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+// @custom-variant dark (&:is(.dark *));
+:root {
+  --default: #ccc;
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-primary: #00a63e;
+  --color-primary-50: #edfff3;
+  --color-primary-100: #d6ffe5;
+  --color-primary-200: #afffcc;
+  --color-primary-300: #71ffa6;
+  --color-primary-400: #2dfb78;
+  --color-primary-500: #02e556;
+  --color-primary-600: #00bf43;
+  --color-primary-700: #00a63e;
+  --color-primary-800: #067530;
+  --color-primary-900: #085f2a;
+  --color-primary-950: #003615;
+  --heroui-radius-small: var(--radius-sm);
+  --heroui-radius-medium: var(--radius-md);
+  --heroui-radius-large: var(--radius-lg);
+}
+
+@theme {
+  --color-default: var(--default);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--color-primary);
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+  --color-secondary: var(--color-blue-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.colpu__article-bd {
+  margin-bottom: 2rem;
+
+  * {
+    all: revert;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--color-gray-700);
+
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1;
+    margin: 0.5rem 0;
+    font-weight: revert;
+    color: var(--color-gray-900);
+    font-size: revert;
+  }
+  // h1 {
+  //   font-size: 1.125rem;
+  // }
+  // h2 {
+  //   font-size: 1.1rem;
+  // }
+  // h3 {
+  //   font-size: 1.075rem;
+  // }
+  // h4 {
+  //   font-size: 1.05rem;
+  // }
+  // h5 {
+  //   font-size: 1.025rem;
+  // }
+  // h6 {
+  //   font-size: 1rem;
+  // }
+  p {
+    margin: 0 0 1rem 0;
+    padding: 0;
+    font-size: 1rem;
+    text-indent: 2em;
+    font-weight: normal;
+  }
+  ul {
+    margin: 0 0 0.5rem 0;
+    padding: 0 0 0 1rem;
+  }
+  div {
+    display: flow-root;
+  }
+}
