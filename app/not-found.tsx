@@ -34,15 +34,15 @@ export default async function NotFound() {
 
   // 可选：发送到日志服务
   if (process.env.NODE_ENV === "production") {
-    await fetch("https://your-logging-service.com/404", {
-      method: "POST",
-      body: JSON.stringify({
-        path,
-        timestamp: new Date().toISOString(),
-        userAgent: headersList.get("user-agent"),
-        referer: headersList.get("referer"),
-      }),
-    }).catch(console.error);
+    // await fetch("https://your-logging-service.com/404", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     path,
+    //     timestamp: new Date().toISOString(),
+    //     userAgent: headersList.get("user-agent"),
+    //     referer: headersList.get("referer"),
+    //   }),
+    // }).catch(console.error);
   }
 
   return (

@@ -2,15 +2,14 @@
  * @Author: colpu
  * @Date: 2026-01-22 08:59:47
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-18 20:51:35
+ * @LastEditTime: 2026-02-28 11:43:00
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
 
 import { interceptors, RequestInterceptor } from "./interceptor";
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:8610/api";
-
+const BASE_URL = process.env.BASE_URL;
 // ==================== 类型定义 ====================
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 export interface RequestExtra {
