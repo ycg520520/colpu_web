@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-01 23:51:35
+ * @LastEditTime: 2026-03-01 23:58:43
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -16,15 +16,16 @@ const {
 const WORKSPACE = `/var/www/${name}`;
 const command = [
   "git fetch",
-  `pm2 startOrRestart launched.config.json --env ${env}`,
+  "tar -xzf .next/standalone.tar.gz"
+    `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
 ];
 // 将本地的配置文件复制到远程服务器
 function deployLocal() {
   const arr = config.deploy.host.map(ip => {
     return [
-      `scp -r launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`,
-      `scp -r .next/standalone root@${ip}:${WORKSPACE}/current/.next/standalone`].join(" && ");
+      `scp -r standalone.tar.gz root@${ip}:${WORKSPACE}/current/.next/standalone.tar.gz`,
+      `scp -r launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`].join(" && ");
   });
   arr.unshift('cp -r public .next/standalone/',
     'cp -r .next/static .next/standalone/.next/',
