@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-01 23:29:40
+ * @LastEditTime: 2026-03-01 23:33:38
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -23,7 +23,7 @@ const command = [
 function deployLocal() {
   return config.deploy.host.map(ip => {
     return [`scp -r ./launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`,
-    `scp -r ./.next/standalone root@${ip}:${WORKSPACE}/current/.next/standalone`];
+    `scp -r .next/standalone root@${ip}:${WORKSPACE}/current/.next/standalone`].join(" && ");
   }).join(" && ");
 }
 const setDeployENV = () => {
