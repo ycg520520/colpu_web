@@ -6,9 +6,15 @@
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start -p 8612",
+    "deploy": "colpu-cli deploy -g",
     "lint": "eslint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:ycg520520/colpu_admin_web.git"
+  },
   "dependencies": {
+    "@colpu/cli": "^1.0.2",
     "@heroui/react": "^2.8.9",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/forms": "^0.5.11",

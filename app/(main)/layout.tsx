@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-12 22:46:15
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-27 18:52:47
+ * @LastEditTime: 2026-03-01 00:13:09
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -18,6 +18,7 @@ import dayjs from "dayjs";
 import { getMenus } from "@/api";
 import UserAvatar from "@/components/UserAvatar";
 import CopyButton from "@/components/CopyButton";
+import OpenWechat from "@/components/OpenWechat";
 function getMenuSEO(map: any, pathname: string) {
   const { name, title, keywords, description } = map[pathname] || {};
   return {
@@ -51,19 +52,7 @@ export default async function MainLayout({
           <div className="flex items-center justify-between h-full">
             <Figure />
             <Navbar menus={menus as []} />
-            <div className="flex items-center gap-3 sm:gap-4 ml-auto">
-              <div className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-green-50 to-teal-50 border border-green-100 rounded-full pl-1 pr-3 py-1 hover:shadow-sm transition-all duration-200 cursor-pointer group hover:scale-[1.02] hover:border-green-200">
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-green-600">
-                  <Icon width="24" height="24" icon="token:chat" />
-                </div>
-                <div className="flex flex-col leading-none">
-                  <span className="text-xs font-bold text-green-800">
-                    公众号：ColpuCMS
-                  </span>
-                  <span className="text-xs text-green-600">获取更多动态</span>
-                </div>
-              </div>
-            </div>
+            <OpenWechat />
             <UserAvatar />
           </div>
         </div>
