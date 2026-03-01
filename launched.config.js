@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-01 22:56:52
+ * @LastEditTime: 2026-03-01 23:29:40
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -16,15 +16,14 @@ const {
 const WORKSPACE = `/var/www/${name}`;
 const command = [
   "git fetch",
-  "npm install --no-lockfile --omit=dev",
-  "npm run build",
   `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
 ];
 // 将本地的配置文件复制到远程服务器
 function deployLocal() {
   return config.deploy.host.map(ip => {
-    return `scp -r ./launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`;
+    return [`scp -r ./launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`,
+    `scp -r ./.next/standalone root@${ip}:${WORKSPACE}/current/.next/standalone`];
   }).join(" && ");
 }
 const setDeployENV = () => {
@@ -53,8 +52,10 @@ const LAUNCHED = {
   apps: [
     {
       name,
-      script: 'node_modules/next/dist/bin/next', // 启动脚本
-      args: 'start', // 启动参数
+      // script: 'node_modules/next/dist/bin/next', // 启动脚本
+      // args: 'start', // 启动参数
+      script: './next/standalone/server.js', // 启动脚本
+      // args: 'start', // 启动参数
       cwd: "./",
       instances: 'max',
       max_restarts: 2,
