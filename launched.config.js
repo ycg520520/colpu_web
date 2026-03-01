@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-01 23:47:08
+ * @LastEditTime: 2026-03-01 23:51:35
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -21,14 +21,15 @@ const command = [
 ];
 // 将本地的配置文件复制到远程服务器
 function deployLocal() {
-  return config.deploy.host.map(ip => {
+  const arr = config.deploy.host.map(ip => {
     return [
-    'cp -r public .next/standalone/',
+      `scp -r launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`,
+      `scp -r .next/standalone root@${ip}:${WORKSPACE}/current/.next/standalone`].join(" && ");
+  });
+  arr.unshift('cp -r public .next/standalone/',
     'cp -r .next/static .next/standalone/.next/',
-    'tar -czf standalone.tar.gz .next/standalone/',
-    `scp -r launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`,
-    `scp -r .next/standalone root@${ip}:${WORKSPACE}/current/.next/standalone`].join(" && ");
-  }).join(" && ");
+    'tar -czf standalone.tar.gz .next/standalone/')
+  return arr.join(" && ");
 }
 const setDeployENV = () => {
   const map = {};
