@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-18 15:59:57
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-21 16:11:08
+ * @LastEditTime: 2026-03-02 00:30:34
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -32,10 +32,12 @@ export const userStore = create<UserState>()((set, state) => ({
       ...data,
     })
       .then((userToken) => {
+        debugger
         setItem(TOKEN, userToken);
         set({ userToken, status: StatusEnum.SUCCEEDED });
       })
       .catch((err) => {
+        debugger
         set({ status: StatusEnum.FAILED });
       });
   },
