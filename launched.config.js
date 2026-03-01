@@ -16,8 +16,8 @@ const {
 const WORKSPACE = `/var/www/${name}`;
 const command = [
   "git fetch",
-  "tar -xzf .next/standalone.tar.gz"
-    `pm2 startOrRestart launched.config.json --env ${env}`,
+  "tar -xzf .next/standalone.tar.gz",
+  `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
 ];
 // 将本地的配置文件复制到远程服务器
