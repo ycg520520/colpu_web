@@ -11,6 +11,7 @@ import { Status } from "@/constants/types";
 export interface UserToken {
   access_token: string;
   expires_in: number;
+  expires_at?: number; // 过期时间戳（毫秒），由 normalizeToken 计算
   refresh_token: string;
   token_type: string;
 }

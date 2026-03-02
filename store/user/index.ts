@@ -12,6 +12,7 @@ import { create } from "zustand";
 import { post, get } from "@/utils/request";
 import { StatusEnum } from "@/constants/types";
 import { getItem, setItem, removeItem } from "@/utils/storage";
+import { normalizeToken } from "@/utils/token";
 import { TOKEN, USER } from "@/constants";
 export const userStore = create<UserState>()((set, state) => ({
   user: undefined,
@@ -32,12 +33,11 @@ export const userStore = create<UserState>()((set, state) => ({
       ...data,
     })
       .then((userToken) => {
-        debugger
-        setItem(TOKEN, userToken);
-        set({ userToken, status: StatusEnum.SUCCEEDED });
+        const token = normalizeToken(userToken);
+        setItem(TOKEN, token);
+        set({ userToken: token, status: StatusEnum.SUCCEEDED });
       })
-      .catch((err) => {
-        debugger
+      .catch(() => {
         set({ status: StatusEnum.FAILED });
       });
   },
