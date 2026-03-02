@@ -2,14 +2,43 @@
  * @Author: colpu
  * @Date: 2026-01-22 08:59:47
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-02 00:42:52
+ * @LastEditTime: 2026-03-02
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
 
 import { interceptors, RequestInterceptor } from "./interceptor";
+import { TOKEN } from "@/constants";
+import { getItem, removeItem, setItem } from "../storage";
+import { normalizeToken } from "../token";
+import type { UserToken } from "@/store/user/types";
+import { isClient } from "..";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+// 401 刷新相关状态
+let isRefreshing = false;
+type QueuedItem = {
+  resolve: (token: UserToken) => void;
+  reject: (err: unknown) => void;
+  url: string;
+  options: Record<string, any>;
+};
+const failedQueue: QueuedItem[] = [];
+const processQueue = (token?: UserToken, error?: unknown) => {
+  failedQueue.forEach((p) => {
+    if (error) p.reject(error);
+    else if (token) p.resolve(token);
+  });
+  failedQueue.length = 0;
+};
+
+const redirectToLogin = () => {
+  if (!isClient) return;
+  removeItem(TOKEN);
+  const path = encodeURIComponent(window.location.pathname + window.location.search);
+  window.location.replace(`/login?redirect=${path}`);
+};
 // ==================== 类型定义 ====================
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 export interface RequestExtra {
@@ -95,7 +124,47 @@ export async function fetcher<TResponse = any, TBody = unknown>(
         config,
         url: fullUrl,
       };
-      // 应用错误拦截器（根据 skipError 决定是否跳过）
+      // 401：尝试刷新 token 后重试
+      if (
+        res.status === 401 &&
+        !extra?.isRefreshRequest &&
+        isClient
+      ) {
+        const userToken: UserToken = getItem(TOKEN) || {};
+        if (!userToken.refresh_token) {
+          redirectToLogin();
+          return Promise.reject(error);
+        }
+        if (isRefreshing) {
+          return new Promise((resolve, reject) => {
+            failedQueue.push({
+              resolve: () => resolve(fetcher(url, options)),
+              reject,
+              url,
+              options,
+            });
+          });
+        }
+        isRefreshing = true;
+        try {
+          const rawToken = await post("token", {
+            grant_type: "refresh_token",
+            refresh_token: userToken.refresh_token,
+          }, {
+            extra: { skipAuth: true, isRefreshRequest: true },
+          });
+          const token = normalizeToken(rawToken as UserToken);
+          setItem(TOKEN, token);
+          isRefreshing = false;
+          processQueue(token);
+          return fetcher(url, options);
+        } catch (e) {
+          isRefreshing = false;
+          processQueue(undefined, e);
+          redirectToLogin();
+          return Promise.reject(error);
+        }
+      }
       return interceptors.applyError(error, extra);
     }
 

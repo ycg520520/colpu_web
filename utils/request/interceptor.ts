@@ -123,13 +123,7 @@ export const authInterceptor: RequestInterceptor = {
     return [config, url];
   },
   onError: async (error) => {
-    if (error.status === 401) {
-      console.log("error.status", error.status, error.config);
-      // 重定向到登录页
-      if (isClient) {
-        // window.location.href = "/login";
-      }
-    }
+    // 401 由 fetcher 内部处理（刷新/重定向），此处仅透传
     return Promise.reject(error);
   },
 };
@@ -149,7 +143,6 @@ export const loggerInterceptor: RequestInterceptor = {
     return response;
   },
   onError: async (error, extra) => {
-    debugger;
     if (!extra?.skipLogger) {
       console.error("[Error]", { error, extra });
     }
