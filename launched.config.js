@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-01 23:58:43
+ * @LastEditTime: 2026-03-06 15:30:44
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -71,6 +71,7 @@ const LAUNCHED = {
       node_args: "--experimental-modules --es-module-specifier-resolution=node",
       env: {
         NODE_ENV: 'production',
+        HOST: "0.0.0.0",
         PORT: `${config.port}` // 指定应用运行的端口
       },
       env_preview: {
