@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-18 15:59:57
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-02 00:30:34
+ * @LastEditTime: 2026-03-06 23:24:59
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -17,7 +17,7 @@ import { TOKEN, USER } from "@/constants";
 export const userStore = create<UserState>()((set, state) => ({
   user: undefined,
   userToken: undefined,
-  status: StatusEnum.IDLE,
+  status: StatusEnum.LOADING,
   error: undefined,
   getToken() {
     const userToken = getItem(TOKEN);

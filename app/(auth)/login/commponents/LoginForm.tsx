@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-15 15:29:25
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-18 18:59:30
+ * @LastEditTime: 2026-03-06 23:27:10
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -98,10 +98,10 @@ export default function LoginForm() {
           type="submit"
           radius="full"
           color="primary"
-          className="inline-block py-1 w-full"
+          className="inline-block py-1 w-full flex items-center justify-center"
         >
           {status == StatusEnum.LOADING ? (
-            <Icon icon="mdi:login" fontSize={20} />
+            <Icon icon="line-md:loading-alt-loop" fontSize={20} />
           ) : null}
           登 陆
         </Button>

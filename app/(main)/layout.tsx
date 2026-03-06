@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-12 22:46:15
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-01 00:13:09
+ * @LastEditTime: 2026-03-07 00:05:09
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -52,6 +52,19 @@ export default async function MainLayout({
           <div className="flex items-center justify-between h-full">
             <Figure />
             <Navbar menus={menus as []} />
+            <a
+              href="https://github.com/ycg520520/colpu_web"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="靠谱Colpu"
+              className="mr-5 ml-auto"
+            >
+              <Icon
+                icon="ant-design:github-filled"
+                className="text-gray-600 hover:text-primary transition-colors"
+                fontSize="36"
+              />
+            </a>
             <OpenWechat />
             <UserAvatar />
           </div>

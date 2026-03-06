@@ -1,9 +1,8 @@
-import { config } from "@/proxy";
 /*
  * @Author: colpu
  * @Date: 2026-02-18 15:01:42
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-02 17:04:26
+ * @LastEditTime: 2026-03-06 16:17:57
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
