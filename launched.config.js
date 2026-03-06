@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-06 15:30:44
+ * @LastEditTime: 2026-03-06 15:34:27
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -27,7 +27,9 @@ function deployLocal() {
       `scp -r standalone.tar.gz root@${ip}:${WORKSPACE}/current/.next/standalone.tar.gz`,
       `scp -r launched.config.json root@${ip}:${WORKSPACE}/current/launched.config.json`].join(" && ");
   });
-  arr.unshift('cp -r public .next/standalone/',
+  arr.unshift(
+    'npm run build',
+    'cp -r public .next/standalone/',
     'cp -r .next/static .next/standalone/.next/',
     'tar -czf standalone.tar.gz .next/standalone/')
   return arr.join(" && ");
