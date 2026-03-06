@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-06 15:34:27
+ * @LastEditTime: 2026-03-06 15:48:46
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -60,10 +60,8 @@ const LAUNCHED = {
   apps: [
     {
       name,
-      // script: 'node_modules/next/dist/bin/next', // 启动脚本
-      // args: 'start', // 启动参数
       script: '.next/standalone/server.js', // 启动脚本
-      // args: 'start', // 启动参数
+      args: 'start', // 启动参数
       cwd: "./",
       instances: 'max',
       max_restarts: 2,
@@ -74,6 +72,7 @@ const LAUNCHED = {
       env: {
         NODE_ENV: 'production',
         HOST: "0.0.0.0",
+        HOSTNAME: "0.0.0.0",
         PORT: `${config.port}` // 指定应用运行的端口
       },
       env_preview: {
