@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-08 16:41:19
+ * @LastEditTime: 2026-03-08 16:46:10
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -15,8 +15,7 @@ const {
 } = await getConfig(import.meta.dirname, { dir: './', env });
 const WORKSPACE = `/var/www/${name}`;
 const command = [
-  "git pull",
-  "mkdir -p ./dist && tar -xzf dist.tar.gz -C ./dist",
+  "mkdir -p ./dist && tar -xzf dist.tar.gz -C ./dist --warning=no-unknown-keyword",
   `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
 ];
