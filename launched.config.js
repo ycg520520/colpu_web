@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-08 15:05:47
+ * @LastEditTime: 2026-03-08 15:14:03
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -59,7 +59,7 @@ const LAUNCHED = {
   apps: [
     {
       name,
-      script: 'dist/server.js', // 启动脚本
+      script: './dist/server.js', // 启动脚本
       args: 'start', // 启动参数
       cwd: "./",
       instances: 'max',
