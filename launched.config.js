@@ -16,7 +16,7 @@ const {
 const WORKSPACE = `/var/www/${name}`;
 const command = [
   "get pull",
-  "tar -xzf dist.tar.gz -C ./dist",
+  "mkdir -p ./dist && tar -xzf dist.tar.gz -C ./dist",
   `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
 ];
