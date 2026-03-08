@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-08 15:57:38
+ * @LastEditTime: 2026-03-08 15:59:21
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -16,6 +16,7 @@ const {
 const WORKSPACE = `/var/www/${name}`;
 const command = [
   "get pull",
+  `git config --global --add safe.directory ${WORKSPACE}/source`,
   "mkdir -p dist && tar -xzf dist.tar.gz",
   `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
