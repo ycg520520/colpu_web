@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-08 15:39:44
+ * @LastEditTime: 2026-03-08 15:45:31
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -30,7 +30,7 @@ function deployLocal() {
     'npm run build',
     'cp -r public .next/standalone/',
     'cp -r .next/static .next/standalone/.next/',
-    'tar -czf dist.tar.gz -C .next/standalone .')
+    'tar --no-xattrs -czf dist.tar.gz -C .next/standalone .')
   return arr.join(" && ");
 }
 const setDeployENV = () => {
