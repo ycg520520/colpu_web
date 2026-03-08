@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-08 15:15:41
+ * @LastEditTime: 2026-03-08 15:39:44
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -15,8 +15,7 @@ const {
 } = await getConfig(import.meta.dirname, { dir: './', env });
 const WORKSPACE = `/var/www/${name}`;
 const command = [
-  "pwd",
-  "tar -xzf dist.tar.gz",
+  "mkdir -p dist && tar -xzf dist.tar.gz",
   `pm2 startOrRestart launched.config.json --env ${env}`,
   'pm2 save && pm2 startup'
 ];
