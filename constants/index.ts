@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-01-31 10:10:23
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-18 15:31:20
+ * @LastEditTime: 2026-03-08 17:33:36
  * 
  * Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -41,4 +41,10 @@ export const FILE_TYPE_CODE = {
   16: "wmv",
   17: "flv",
   18: "video",
+};
+
+export const ENV_MAP = {
+  development: 'development',
+  production: 'production',
+  preview: 'preview',
 };

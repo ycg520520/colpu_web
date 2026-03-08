@@ -2,14 +2,16 @@
  * @Author: colpu
  * @Date: 2026-01-19 17:32:14
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-21 15:37:20
+ * @LastEditTime: 2026-03-08 19:25:14
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
 import Link from "next/link";
 import { get } from "@/utils/request";
+import { getConfig } from "@/utils/config";
 export default async function Home() {
   const features = (await get("web/feature", { type: "feature" })) as any[];
+  const config = await getConfig();
   return (
     <>
       <div className="flex flex-col items-center justify-center h-[400]">
@@ -26,7 +28,7 @@ export default async function Home() {
         </p>
         <Link
           className="mt-4 px-12 py-3 rounded-full bg-green-600 text-white text-lg shadow-xs shadow-gray-200 transition-all duration-300 bg-linear-[135deg] from-primary-400 from-[-50%] via-primary to-primary-500 to-300% hover:bg-linear-[135deg] hover:from-primary-400 hover:from-[-80%] hover:via-primary hover:to-primary-600 hover:to-300%"
-          href="#"
+           href={config.github_url}
         >
           开始使用
         </Link>

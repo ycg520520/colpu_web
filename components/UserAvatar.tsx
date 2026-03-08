@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-18 18:21:05
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-02-25 17:08:21
+ * @LastEditTime: 2026-03-08 19:45:19
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -16,6 +16,10 @@ export default function HeaderUser() {
   const { logout } = userStore();
   const router = useRouter();
   const items: any[] = [
+    {
+      path: "//admin.colpu.com",
+      name: "后台管理",
+    },
     {
       node: (
         <span
@@ -33,7 +37,7 @@ export default function HeaderUser() {
   ];
 
   return (
-    <div className="ml-4">
+    <div className="ml-4 leading-0">
       <Dropdown items={items}>
         {user ? (
           <User
@@ -42,6 +46,7 @@ export default function HeaderUser() {
             avatarProps={{
               src: user.avatar,
             }}
+            className="leading-[1]"
           />
         ) : (
           <a

@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-02-12 22:46:15
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-07 00:05:09
+ * @LastEditTime: 2026-03-08 19:43:14
  *
  * Copyright (c) 2026 by colpu, All Rights Reserved.
  */
@@ -19,6 +19,8 @@ import { getMenus } from "@/api";
 import UserAvatar from "@/components/UserAvatar";
 import CopyButton from "@/components/CopyButton";
 import OpenWechat from "@/components/OpenWechat";
+import { getConfig } from "@/utils/config";
+import Link from "next/link";
 function getMenuSEO(map: any, pathname: string) {
   const { name, title, keywords, description } = map[pathname] || {};
   return {
@@ -44,6 +46,7 @@ export default async function MainLayout({
     (res) => res[0],
   );
   const sites = await get("web/site");
+  const config = await getConfig();
   return (
     <>
       <TopTip />
@@ -53,7 +56,7 @@ export default async function MainLayout({
             <Figure />
             <Navbar menus={menus as []} />
             <a
-              href="https://github.com/ycg520520/colpu_web"
+              href={config.github_url}
               target="_blank"
               rel="noopener noreferrer"
               title="靠谱Colpu"
