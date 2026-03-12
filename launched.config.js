@@ -2,7 +2,7 @@
  * @Author: colpu
  * @Date: 2026-03-01 22:33:32
  * @LastEditors: colpu ycg520520@qq.com
- * @LastEditTime: 2026-03-08 16:46:10
+ * @LastEditTime: 2026-03-13 07:09:14
  * @
  * @Copyright (c) 2026 by colpu, All Rights Reserved. 
  */
@@ -62,7 +62,7 @@ const LAUNCHED = {
       script: './dist/server.js', // 启动脚本
       args: 'start', // 启动参数
       cwd: "./",
-      instances: 'max',
+      instances: 1,
       max_restarts: 2,
       min_uptime: "1h",
       exec_mode: "cluster",
